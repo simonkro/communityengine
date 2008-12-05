@@ -2,7 +2,7 @@ module Globalite
 
   module L10n
     
-    @@default_language = :en
+    @@default_language = :de
     attr_reader :default_language
 
     @@default_country = :*
