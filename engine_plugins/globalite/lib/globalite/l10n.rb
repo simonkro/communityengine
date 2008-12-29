@@ -156,8 +156,9 @@ module Globalite
             localized =  @@locales[t_locale][key] || error_msg
           end  
         end
-      end  
+      end
       localized = interpolate_string(localized.dup, args.dup) if localized.class == String && localized != error_msg
+      localized = "__[#{key}]__" if localized == error_msg
       
       # let's handle pluralization if needed
       # the translation must include pluralize{count, singular string} to be translated
