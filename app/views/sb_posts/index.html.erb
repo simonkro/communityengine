@@ -36,12 +36,12 @@
     </div>
 
     <%= avatar_for @users[post.user_id] %>
-    <span class="fn"><%= link_to truncate(h(@users[post.user_id].display_name), 15), user_path(post.user) %></span>
+    <span class="fn"><%= link_to truncate(h(@users[post.user_id].display_name), :length => 15), user_path(post.user) %></span>
     <span class="posts"><%= pluralize @users[post.user_id].sb_posts_count, 'post' %></span>
   </td>
   <td class="body entry-content">
     <p class="topic">
-      <%=:topic.l( link_to(h(post.forum_name), forum_path(post.forum_id)) ) %> / 
+      <%= link_to(h(post.forum_name), forum_path(post.forum_id)) %> / 
       <%= link_to h(post.topic_title), forum_topic_path(post.forum_id, post.topic_id) %>
     </p>
     
