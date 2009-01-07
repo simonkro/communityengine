@@ -1,6 +1,5 @@
-- @section = 'events'
-
 .yui-b
+  = render :partial => 'shared/admin_nav'
   - if @is_admin_user
     .box.alt.first_alt
       = link_to :post_an_event.l, new_event_path

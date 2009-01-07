@@ -59,7 +59,7 @@
         %p
           = submit_tag :save.l
         %p
-          = or.l 
+          = :or.l 
           = link_to :cancel_and_go_back_to_my_posts.l, user_posts_path(@user)
 
   = observe_field  "post_category_id", {:url => {:controller => 'categories', :action => 'show_tips'}, :with => "id", :update => "category_tips", :complete => visual_effect(:highlight, "category_tips", :duration => 0.5)}
