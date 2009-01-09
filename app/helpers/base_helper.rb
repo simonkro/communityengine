@@ -4,7 +4,7 @@ require 'md5'
 module BaseHelper
 
 
-  def commentable_url(comment)
+  def XXXcommentable_urlXXX(comment)
     if comment.commentable_type != "User"
       polymorphic_url([comment.recipient, comment.commentable])+"#comment_#{comment.id}"
     else

@@ -20,7 +20,8 @@ class UsersController < BaseController
   before_filter :login_required, :only => [:edit, :edit_account, :update, :welcome_photo, :welcome_about, 
                                           :welcome_invite, :return_admin, :assume, :featured,
                                           :toggle_featured, :edit_pro_details, :update_pro_details, :dashboard, :deactivate]
-  before_filter :find_user, :only => [:edit, :edit_pro_details, :show, :update, :destroy, :statistics, :deactivate ]
+  before_filter :find_user, :only => [:edit, :edit_pro_details, :edit_account, :show, :update, :update_account, 
+                                     :destroy, :statistics, :deactivate]
   before_filter :require_current_user, :only => [:edit, :update, :update_account,
                                                 :edit_pro_details, :update_pro_details,
                                                 :welcome_photo, :welcome_about, :welcome_invite, :deactivate]
@@ -173,12 +174,9 @@ class UsersController < BaseController
   end
     
   def edit_account
-    @user             = current_user
-    @is_current_user  = true
   end
   
   def update_account
-    @user             = current_user
     @user.attributes  = params[:user]
 
     if @user.save!
