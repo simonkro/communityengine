@@ -22,7 +22,7 @@ class SessionsController < BaseController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
 
-      redirect_back_or_default(dashboard_user_path(current_user))
+      redirect_back_or_default(home_path)
       flash[:notice] = :thanks_youre_now_logged_in.l
       current_user.track_activity(:logged_in)
     else
