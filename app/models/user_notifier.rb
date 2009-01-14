@@ -22,6 +22,14 @@ class UserNotifier < ActionMailer::Base
     @body[:url]  = pending_user_friendships_url(friendship.friend)
     @body[:requester] = friendship.user
   end
+  
+  def friendship_accepted(friendship)
+    setup_email(friendship.user) 
+    @subject     += "Friendship request accepted!"       
+    @body[:requester] = friendship.user
+    @body[:friend]    = friendship.friend
+    @body[:url]       = user_url(friendship.friend)
+  end
 
   def comment_notice(comment)
     setup_email(comment.recipient)
@@ -38,6 +46,16 @@ class UserNotifier < ActionMailer::Base
     @body[:comment] = comment
     @body[:commenter] = comment.user
   end  
+
+  def follow_up_comment_notice_anonymous(email, comment)
+    @recipients  = "#{email}"
+    setup_sender_info
+    @subject     = "[#{AppConfig.community_name}] "
+    @sent_on     = Time.now
+    @subject     += "#{comment.username} has commented on a #{comment.commentable_type} that you also commented on."
+    @body[:url]  = commentable_url(comment)
+    @body[:comment] = comment
+  end
 
   def new_forum_post_notice(user, post)
      setup_email(user)

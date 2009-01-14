@@ -18,8 +18,7 @@
       #id_auto_complete.auto_complete{"class"=>"auto_complete", "id"=>"id_auto_complete"}
       = auto_complete_field 'id', {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'}, :tokens => [',', ' ']  }
       %p
-        = submit_tag :go2.l
-
+        = submit_tag :go.l
 
 #yui-main
   .yui-b.box

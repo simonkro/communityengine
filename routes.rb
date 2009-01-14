@@ -1,4 +1,5 @@
 #Forum routes go first
+recent_forum_posts '/forums/recent', :controller => 'sb_posts', :action => 'index'
 resources :forums, :sb_posts, :monitorship
 resources :sb_posts, :name_prefix => 'all_', :collection => { :search => :get, :monitored => :get }
 
@@ -34,6 +35,7 @@ admin_users '/admin/users', :controller => 'admin', :action => 'users'
 admin_messages '/admin/messages', :controller => 'admin', :action => 'messages'
 
 # sessions routes
+teaser '', :controller=>'base', :action=>'teaser'
 login  '/login',  :controller => 'sessions', :action => 'new'
 signup '/signup', :controller => 'users', :action => 'new'
 logout '/logout', :controller => 'sessions', :action => 'destroy'
